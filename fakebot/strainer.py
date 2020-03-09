@@ -1,4 +1,7 @@
-from bs4 import BeautifulSoup
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    from BeautifulSoup import BeautifulSoup
 from bs4.element import Comment
 from urllib3.exceptions import HTTPError
 import urllib3

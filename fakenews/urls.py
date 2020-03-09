@@ -13,9 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
+import os, sys, re, time
+
+proj_path = 'e:/fakenews'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fakenews.settings')
+sys.path.append(proj_path)
+os.chdir(proj_path)
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+from fakebot import views
+
+app_name='fakebot'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('',views.index)
 ]

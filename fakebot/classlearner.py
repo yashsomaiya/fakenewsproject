@@ -3,13 +3,14 @@ import numpy as np
 from sklearn.metrics import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.neural_network.multilayer_perceptron import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network.multilayer_perceptron import MLPClassifier
+
 
 
 import os, sys, re, time
@@ -34,7 +35,9 @@ print("Processing examples")
 
 
 X_train, X_test, y_train, y_test = train_test_split(examplesMatrix, Y_vector, test_size=0.2)
-model = MLPClassifier(hidden_layer_sizes=(128,64,32,16,8), max_iter=2500)
+#model = SVC(gamma='scale', probability = True)
+#model = MLPClassifier(hidden_layer_sizes=(128,64,32,16,8), max_iter=2500)
+model = LogisticRegression()
 model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 
@@ -46,3 +49,6 @@ print(confusion_matrix(predictions, y_test))
 print("Classification report: ")
 print(classification_report(predictions, y_test))
 print("***************")
+
+mae = mean_absolute_error(y_test, predictions)
+print("Mean absolute Error:"+ str(mae))
