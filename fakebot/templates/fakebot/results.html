@@ -10,16 +10,19 @@
 	}
 	
 	</style>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.0/css/bootstrap-slider.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% block content %}
 <div class="row row row-fluid">
 	<div class="wpb_column columns small-12 medium-12">
 		<div class="vc_column-inner  ">
 			<div class="wpb_wrapper">
 
-<h2>Analysis of <a href="{{ url }}">{{ headline }}</a><br><br></h2>
+<h2 style="margin-left: 30px;margin-top:30px;">Analysis of :<a href="{{ url }}">{{ headline }}</a><br><br></h2>
 
-<a href="http://127.0.0.1:8000/"><button class="btn btn-outline-primary ">Analyze another</button></a>
+<a href="http://127.0.0.1:8000/"><button class="btn btn-outline-primary " style="margin-left: 30px;">Analyze another</button></a>
 
 <h3 style="text-align: center;">
 	Mlp Result:<br>
@@ -33,32 +36,38 @@
 	<br>
 
 
-   Probability of Fake: {{ mlp_probabilities.0|floatformat }}% chance of Fake
-   <div class=”progress”>	
-	<div class=”progress-bar” id=”fakeProb_bar” role=”progressbar” aria-valuenow="{{ mlp_probabilities.0 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of Fake: {{ mlp_probabilities.0|floatformat }}% chance of Fake</h6>
+	<div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{mlp_probabilities.0}}%">{{ mlp_probabilities.0|floatformat }}%</div>
+	 
+</div>
+	  <br>	
+   
+	
+	<br>
+   <h6 style="margin-left: 20px;">Probability of Dodgy: {{ mlp_probabilities.1|floatformat }}% chance of Dodgy</h6>
+	<div class="w3-light-grey w3-round">
+		<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{mlp_probabilities.1}}%">{{ mlp_probabilities.1|floatformat }}%</div>
+		  </div><br>
    </div>
 	
 	<br>
-   Probability of Dodgy: {{ mlp_probabilities.1|floatformat }}% chance of Dodgy
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MfakeProb_bar” role=”progressbar” aria-valuenow="{{ mlp_probabilities.1 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
-   </div>
+   <h6 style="margin-left: 20px;">Probability of Mostly True: {{ mlp_probabilities.2|floatformat }}% chance of Mostly True</h6>
+   
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{mlp_probabilities.2}}%"> {{ mlp_probabilities.2|floatformat }}% </div>
+			  </div><br>
+   
+	</div>
 	
 	<br>
-   Probability of Mostly True: {{ mlp_probabilities.2|floatformat }}% chance of Mostly True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MtrueProb_bar” role=”progressbar” aria-valuenow="{{ mlp_probabilities.2 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
-   </div>
-	
-	<br>
-   Probability of True: {{ mlp_probabilities.3|floatformat }}% chance of True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”trueProb_bar” role=”progressbar” aria-valuenow="{{ mlp_probabilities.3 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
-   </div>
+   <h6 style="margin-left: 20px;">Probability of True: {{ mlp_probabilities.3|floatformat }}% chance of True</h6>>
+   
+	<div class="w3-light-grey w3-round">
+		<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{mlp_probabilities.3}}%">{{mlp_probabilities.3|floatformat }}%</div>
+		  </div><br>
+   
+	</div>
 
    <h3 style="text-align: center;">
 	Logistic regression Result:<br>
@@ -72,31 +81,27 @@
 	<br>
 
 
-   Probability of Fake: {{ log_probabilities.0|floatformat }}% chance of Fake
-   <div class=”progress”>	
-	<div class=”progress-bar” id=”fakeProb_bar” role=”progressbar” aria-valuenow="{{ log_probabilities.0 }}"
-	aria-valuemin="0" aria-valuemax="100"></div>
+   <h6 style="margin-left: 20px;">Probability of Fake: {{ log_probabilities.0|floatformat }}% chance of Fake</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{log_probabilities.0}}%">{{ log_probabilities.0|floatformat }}% </div>
    </div>
 	
 	<br>
-   Probability of Dodgy: {{ log_probabilities.1|floatformat }}% chance of Dodgy
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MfakeProb_bar” role=”progressbar” aria-valuenow="{{ log_probabilities.1 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of Dodgy: {{ log_probabilities.1|floatformat }}% chance of Dodgy</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{log_probabilities.1}}%">{{ log_probabilities.1|floatformat }}% </div>
    </div>
 	
 	<br>
-   Probability of Mostly True: {{ log_probabilities.2|floatformat }}% chance of Mostly True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MtrueProb_bar” role=”progressbar” aria-valuenow="{{ log_probabilities.2 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of Mostly True: {{ log_probabilities.2|floatformat }}% chance of Mostly True</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{log_probabilities.2}}%">{{ log_probabilities.2|floatformat }}%</div>
    </div>
 	
 	<br>
-   Probability of True: {{ log_probabilities.3|floatformat }}% chance of True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”trueProb_bar” role=”progressbar” aria-valuenow="{{ log_probabilities.3 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;"> Probability of True: {{ log_probabilities.3|floatformat }}% chance of True</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{log_probabilities.3}}%">{{ log_probabilities.3|floatformat }}%</div>
    </div>
 
 
@@ -112,34 +117,30 @@
 	<br>
 
 
-   Probability of Fake: {{ fin_probabilities.0|floatformat }}% chance of Fake
-   <div class=”progress”>	
-	<div class=”progress-bar” id=”fakeProb_bar” role=”progressbar” aria-valuenow="{{ fin_probabilities.0 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;"> Probability of Fake: {{ fin_probabilities.0|floatformat }}% chance of Fake</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{fin_probabilities.0}}%">{{ fin_probabilities.0|floatformat }}%</div>
    </div>
 	
 	<br>
-   Probability of Dodgy: {{ fin_probabilities.1|floatformat }}% chance of Dodgy
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MfakeProb_bar” role=”progressbar” aria-valuenow="{{ fin_probabilities.1 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of Dodgy: {{ fin_probabilities.1|floatformat }}% chance of Dodgy</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px; height:24px;width:{{fin_probabilities.1}}%">{{ fin_probabilities.1|floatformat }}% </div>
    </div>
 	
 	<br>
-   Probability of Mostly True: {{ fin_probabilities.2|floatformat }}% chance of Mostly True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”MtrueProb_bar” role=”progressbar” aria-valuenow="{{ fin_probabilities.2 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of Mostly True: {{ fin_probabilities.2|floatformat }}% chance of Mostly True</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{fin_probabilities.2}}%">{{ fin_probabilities.2|floatformat }}% </div>
    </div>
 	
 	<br>
-   Probability of True: {{ fin_probabilities.3|floatformat }}% chance of True
-   <div class=”progress”>
-	<div class=”progress-bar” id=”trueProb_bar” role=”progressbar” aria-valuenow="{{ fin_probabilities.3 }}"
-	aria-valuemin="0" aria-valuemax="100" ></div>
+   <h6 style="margin-left: 20px;">Probability of True: {{ fin_probabilities.3|floatformat }}% chance of True</h6>
+   <div class="w3-light-grey w3-round">
+	<div class="w3-container w3-round w3-blue" style="margin-left: 20px;height:24px;width:{{fin_probabilities.3}}%"> {{ fin_probabilities.3|floatformat }}%</div>
    </div>
    <hr>
-	Extracted words: {{ words }}<br>
+	<!--Extracted words: {{ words }}--><br>
 <br><br><br>
 			</div>
 		</div>

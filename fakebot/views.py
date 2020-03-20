@@ -21,6 +21,7 @@ from fakebot.utils import *
 def index(request):
 
     url = request.GET.get('u')
+    
     if((url is not None) and (len(url) > 5)):
         print("Setting up")
         #svc_model = pickle.load(open('fakebot/svc_model.sav', 'rb'))
